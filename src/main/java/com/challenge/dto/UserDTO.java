@@ -18,23 +18,4 @@ public class UserDTO implements Serializable {
     private RoleEnum roleEnum;
     private List<RatingDTO> ratings;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setRoleEnum(RoleEnum roleEnum) {
-        this.roleEnum = roleEnum;
-    }
-
-    public void setRatings(List<RatingDTO> ratings) {
-        this.ratings = ratings;
-    }
 }
