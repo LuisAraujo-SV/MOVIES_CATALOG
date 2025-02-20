@@ -16,6 +16,9 @@
 	<properties>
 		<java.version>11</java.version>
 		<spring-cloud.version>2021.0.9</spring-cloud.version>
+		<jjwt.version>0.12.6</jjwt.version>
+		<lombok.version>1.18.30</lombok.version>
+		<postgresql.version>42.7.5</postgresql.version>
 	</properties>
 	<dependencies>
 		<!-- Spring Boot Web -->
@@ -23,6 +26,19 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
+		<!-- Spring Boot JPA -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>${postgresql.version}</version>
+		</dependency>
+
 
 		<!-- Spring Boot Security + JWT -->
 		<dependency>
@@ -32,7 +48,7 @@
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt</artifactId>
-			<version>0.12.6</version>
+			<version>${jjwt.version}</version>
 		</dependency>
 
 		<!-- Validation -->
@@ -40,6 +56,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
+
+		<!-- Lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
 
 		<!-- Test -->
 		<dependency>
