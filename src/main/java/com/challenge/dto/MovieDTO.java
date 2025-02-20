@@ -11,11 +11,11 @@ public class MovieDTO implements Serializable {
 
     private Long id;
     private String name;
-    private int releaseYear;
+    private Integer releaseYear;
     private String synopsis;
     private String category;
     private String imageUrl;
-    private UserDTO createdBy;
     private LocalDateTime createdDate;
+    private Double averageRating;
 
 }

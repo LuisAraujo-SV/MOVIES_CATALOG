@@ -12,5 +12,8 @@ public interface MovieService {
 
     public MovieDTO updateMovie(Long id, MovieDTO movieDTO);
 
-    public Page<MovieDTO> getMovies(int page, int size);
+    public Page<MovieDTO> searchMovies(String search,
+                                    String category,
+                                    Integer releaseYear,
+                                    Pageable pageable);
 }

@@ -19,7 +19,7 @@ public class MovieEntity {
     private String name;
 
     @Column(name = "release_year")
-    private int releaseYear;
+    private Integer releaseYear;
 
     @Column(name = "synopsis", length = 1000)
     private String synopsis;
@@ -30,12 +30,18 @@ public class MovieEntity {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "created_by", nullable = false)
     private UserEntity createdBy;
 
     @Column(name = "created_date")
     private LocalDateTime createdDate;
+
+    @Column(name = "rating_count")
+    private Integer ratingCount;
+
+    @Column(name = "average_rating")
+    private Double averageRating;
 
 
 }

@@ -7,7 +7,6 @@ import com.challenge.model.repositories.MovieRepository;
 import com.challenge.service.MovieService;
 import com.challenge.utils.MovieValidator;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -50,9 +49,8 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public Page<MovieDTO> getMovies(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
-        return movieMapper.toDTOPage(movieRepository.findAll(pageable));
+    public Page<MovieDTO> searchMovies(String search, String category, Integer releaseYear, Pageable pageable) {
+        return movieMapper.toDTOPage(movieRepository.searchMovies(search, category, releaseYear, pageable));
     }
 
     /**

@@ -11,6 +11,6 @@ public class RatingDTO implements Serializable {
     private Long id;
     private UserDTO user;
     private MovieDTO movie;
-    private int rating;
+    private Integer rating;
 
 }

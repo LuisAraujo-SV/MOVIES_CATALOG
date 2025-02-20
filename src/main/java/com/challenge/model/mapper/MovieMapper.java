@@ -25,8 +25,8 @@ public class MovieMapper {
         movieDTO.setSynopsis(movieEntity.getSynopsis());
         movieDTO.setCategory(movieEntity.getCategory());
         movieDTO.setImageUrl(movieEntity.getImageUrl());
-        movieDTO.setCreatedBy(userMapper.toDTO(movieEntity.getCreatedBy()));
         movieDTO.setCreatedDate(movieEntity.getCreatedDate());
+        movieDTO.setAverageRating(movieEntity.getAverageRating());
         return movieDTO;
     }
 
@@ -39,7 +39,6 @@ public class MovieMapper {
         movieEntity.setSynopsis(movieEntity.getSynopsis());
         movieEntity.setCategory(movieEntity.getCategory());
         movieEntity.setImageUrl(movieEntity.getImageUrl());
-        movieEntity.setCreatedBy(userMapper.toEntity(movieDTO.getCreatedBy()));
         movieEntity.setCreatedDate(movieEntity.getCreatedDate());
         return movieEntity;
     }

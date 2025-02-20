@@ -27,5 +27,5 @@ public class RatingEntity {
 
     @Min(1) @Max(5)
     @Column(name = "rating")
-    private int rating;
+    private Integer rating;
 }

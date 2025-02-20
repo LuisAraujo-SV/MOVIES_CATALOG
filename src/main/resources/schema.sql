@@ -24,6 +24,8 @@ CREATE TABLE movies_schema.movie (
     image_url VARCHAR(500),
     created_by INT NOT NULL,
     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    rating_count INT NULL,
+    average_rating NUMERIC NULL,
     FOREIGN KEY (created_by) REFERENCES movies_schema.user(id) ON DELETE CASCADE
 );
 

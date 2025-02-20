@@ -18,8 +18,6 @@ public class RatingMapper {
         if (ratingEntity == null) return null;
         RatingDTO ratingDTO = new RatingDTO();
         ratingDTO.setId(ratingEntity.getId());
-        ratingDTO.setUser(userMapper.toDTO(ratingEntity.getUser()));
-        ratingDTO.setMovie(movieMapper.toDTO(ratingEntity.getMovie()));
         ratingDTO.setRating(ratingEntity.getRating());
         return ratingDTO;
     }
@@ -28,8 +26,6 @@ public class RatingMapper {
         if (ratingDTO == null) return null;
         RatingEntity ratingEntity = new RatingEntity();
         ratingEntity.setId(ratingEntity.getId());
-        ratingEntity.setUser(userMapper.toEntity(ratingDTO.getUser()));
-        ratingEntity.setMovie(movieMapper.toEntity(ratingDTO.getMovie()));
         ratingEntity.setRating(ratingEntity.getRating());
         return ratingEntity;
     }
