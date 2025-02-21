@@ -20,6 +20,7 @@ public class DatabaseConfiguration {
 
     /**
      * Executes after schema.sql and data.sql
+     * Create Triggers to manage averageRating column for movies
      * @throws IOException
      */
     @PostConstruct
