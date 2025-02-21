@@ -13,9 +13,6 @@ import java.util.stream.Collectors;
 @Component
 public class MovieMapper {
 
-    @Autowired
-    private UserMapper userMapper;
-
     public MovieDTO toDTO(MovieEntity movieEntity) {
         if (movieEntity == null) return null;
         MovieDTO movieDTO = new MovieDTO();

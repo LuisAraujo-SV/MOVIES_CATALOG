@@ -26,7 +26,8 @@ CREATE TABLE movies_schema.movie (
     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     rating_count INT NULL,
     average_rating NUMERIC NULL,
-    FOREIGN KEY (created_by) REFERENCES movies_schema.user(id) ON DELETE CASCADE
+    FOREIGN KEY (created_by) REFERENCES movies_schema.user(id) ON DELETE CASCADE,
+    UNIQUE (name, release_year, category)
 );
 
 -- Ratings Table

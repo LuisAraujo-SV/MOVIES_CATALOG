@@ -6,6 +6,11 @@ import com.challenge.dto.response.AbstractResponseDTO;
 import com.challenge.dto.response.CustomResponseDTO;
 import com.challenge.dto.response.UserErrorDTO;
 import com.challenge.service.AuthService;
+import com.challenge.utils.JwtTokenUtil;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Authorization;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +20,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/auth")
 @CrossOrigin
+@SecurityRequirement(name = "bearerAuth")
 public class AuthController {
 
     private final AuthService authService;
@@ -23,11 +29,15 @@ public class AuthController {
         this.authService = authService;
     }
 
+    @ApiOperation(value = "log in")
     @PostMapping("/login")
     public ResponseEntity<? extends AbstractResponseDTO> login(@Valid @RequestBody LoginDTO loginDTO) {
         return ResponseEntity.ok(authService.login(loginDTO));
     }
 
+    @ApiOperation(
+            value = "register a new user",
+            authorizations = { @Authorization(value= JwtTokenUtil.AUTHORIZATION_HEADER) })
     @PostMapping("/register")
     public ResponseEntity<? extends AbstractResponseDTO> register(@Valid @RequestBody RegisterDTO registerDTO) {
         CustomResponseDTO responseDTO = authService.register(registerDTO);

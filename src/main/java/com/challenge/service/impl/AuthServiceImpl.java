@@ -53,6 +53,7 @@ public class AuthServiceImpl implements AuthService {
         }
 
         try {
+            //this method changes the error and message code
             authenticate(responseDTO, loginDTO.getEmail(), loginDTO.getPassword());
         } catch (Exception e) {
             LOGGER.debug(loginDTO.getEmail());
@@ -63,7 +64,7 @@ public class AuthServiceImpl implements AuthService {
         final UserDetails userDetails = userDetailsService
                 .loadUserByUsername(loginDTO.getEmail());
 
-        final String token = jwtTokenUtil.generateToken(userDetails);
+        final String token = JwtTokenUtil.BEARER_PREFIX + jwtTokenUtil.generateToken(userDetails);
 
         responseDTO.setCode(CustomResponseDTO.OK_CODE);
         responseDTO.setMessage(CustomResponseDTO.OK_MESSAGE);

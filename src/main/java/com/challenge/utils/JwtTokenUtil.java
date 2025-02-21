@@ -20,6 +20,9 @@ import java.util.function.Function;
 @Component
 public class JwtTokenUtil implements Serializable {
 
+    public static final String BEARER_PREFIX = "Bearer ";
+    public static final String AUTHORIZATION_HEADER = "Authorization";
+
     private final SecretKey secretKey;
 
     @Value("${jwt.expiration}")
@@ -72,9 +75,9 @@ public class JwtTokenUtil implements Serializable {
     }
 
     public String extractToken(HttpServletRequest request) {
-        final String requestTokenHeader = request.getHeader("Authorization");
+        final String requestTokenHeader = request.getHeader(AUTHORIZATION_HEADER);
 
-        if (requestTokenHeader == null || !requestTokenHeader.startsWith("Bearer ")) {
+        if (requestTokenHeader == null || !requestTokenHeader.startsWith(BEARER_PREFIX)) {
             return null;
         }
 
