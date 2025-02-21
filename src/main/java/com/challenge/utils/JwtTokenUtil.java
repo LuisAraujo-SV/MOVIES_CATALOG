@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
+import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
@@ -69,4 +70,20 @@ public class JwtTokenUtil implements Serializable {
         final String email = extractEmail(token);
         return !isTokenExpired(token) && StringUtils.equals(email, userDetails.getUsername());
     }
+
+    public String extractToken(HttpServletRequest request) {
+        final String requestTokenHeader = request.getHeader("Authorization");
+
+        if (requestTokenHeader == null || !requestTokenHeader.startsWith("Bearer ")) {
+            return null;
+        }
+
+        return StringUtils.substring(requestTokenHeader, 7);
+    }
+
+    public String extractEmail(HttpServletRequest request) {
+        final String token = this.extractToken(request);
+        return this.extractEmail(token);
+    }
+
 }

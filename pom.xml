@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.challenge</groupId>
 	<artifactId>movies-catalog-api</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<name>movies-catalog-api</name>
 	<description>Movies Catalog Code Challenge Java</description>
 	<properties>

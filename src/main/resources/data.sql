@@ -1,7 +1,9 @@
 -- Insert an Admin User
 INSERT INTO movies_schema.user (email, password, role) VALUES
-('admin@movies.com', '$2a$10$CHdG928tip8sC6Ewstz5Ku1tsu34ahCohXRfPfMYL30Sky7.qwEJy', 'ADMIN'),
-('user@movies.com', '$2a$10$PQbupOhDS4Hf2VjZ40ta7O9NpJF2vjPQj6b1cjC0KVIVrFrUM1zIe', 'USER');
+--admin12345$
+--user12345$
+('admin@movies.com', '$2a$10$lmecDDyR7Lmg3GlQuEYfy.iGaT/ZRE9tW4.ZHJQQDRkynyBD3wHbS', 'ADMIN'),
+('user@movies.com', '$2a$10$NSHDNCwW1ttH1vVILmEt/eoOXQODdR6pHZboyn8ruootMtAtcJhn2', 'USER');
 
 -- Insert Some Movies
 INSERT INTO movies_schema.movie (name, release_year, synopsis, category, created_by, rating_count, average_rating) VALUES

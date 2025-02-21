@@ -35,17 +35,15 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-        final String requestTokenHeader = request.getHeader("Authorization");
+        final String jwtToken = jwtTokenUtil.extractToken(request);
 
-        if (requestTokenHeader == null || !requestTokenHeader.startsWith("Bearer ")) {
+        if (jwtToken == null) {
             filterChain.doFilter(request, response); //Break the process
             return;
         }
 
         String email = null;
-        String jwtToken = null;
         try {
-            jwtToken = StringUtils.substring(requestTokenHeader, 7);
             email = jwtTokenUtil.extractEmail(jwtToken);
         } catch (Exception e) {
             LOGGER.error("Jwt Token Exception: {}", e.getMessage());

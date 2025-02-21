@@ -4,6 +4,7 @@ import com.challenge.security.JwtAuthenticationEntryPoint;
 import com.challenge.security.JwtRequestFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -53,7 +54,11 @@ public class SecurityConfiguration {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/auth/login").permitAll()
-                .antMatchers("/movies").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/auth/register").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/movies").hasAnyRole("ADMIN", "USER")
+                .antMatchers(HttpMethod.POST, "/movies").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/movies").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/movies").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

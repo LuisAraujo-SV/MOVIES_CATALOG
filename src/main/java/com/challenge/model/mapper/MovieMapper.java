@@ -33,13 +33,13 @@ public class MovieMapper {
     public MovieEntity toEntity(MovieDTO movieDTO) {
         if (movieDTO == null) return null;
         MovieEntity movieEntity = new MovieEntity();
-        movieEntity.setId(movieEntity.getId());
-        movieEntity.setName(movieEntity.getName());
-        movieEntity.setReleaseYear(movieEntity.getReleaseYear());
-        movieEntity.setSynopsis(movieEntity.getSynopsis());
-        movieEntity.setCategory(movieEntity.getCategory());
-        movieEntity.setImageUrl(movieEntity.getImageUrl());
-        movieEntity.setCreatedDate(movieEntity.getCreatedDate());
+        movieEntity.setId(movieDTO.getId());
+        movieEntity.setName(movieDTO.getName());
+        movieEntity.setReleaseYear(movieDTO.getReleaseYear());
+        movieEntity.setSynopsis(movieDTO.getSynopsis());
+        movieEntity.setCategory(movieDTO.getCategory());
+        movieEntity.setImageUrl(movieDTO.getImageUrl());
+        movieEntity.setCreatedDate(movieDTO.getCreatedDate());
         return movieEntity;
     }
 

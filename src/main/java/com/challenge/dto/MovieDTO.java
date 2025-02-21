@@ -1,6 +1,7 @@
 package com.challenge.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -15,7 +16,11 @@ public class MovieDTO implements Serializable {
     private String synopsis;
     private String category;
     private String imageUrl;
+
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private LocalDateTime createdDate;
+
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Double averageRating;
 
 }
